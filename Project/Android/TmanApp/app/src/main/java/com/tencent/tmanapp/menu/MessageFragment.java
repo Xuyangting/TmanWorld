@@ -1,14 +1,21 @@
 package com.tencent.tmanapp.menu;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.tencent.tmanapp.R;
+import com.tencent.tmanapp.broadcast.BasicBroadcast;
+import com.tencent.tmanapp.util.Config;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +34,8 @@ public class MessageFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private BasicBroadcast basicBroadcast;
+    private LocalBroadcastManager localBroadcastManager;
 
     private OnFragmentInteractionListener mListener;
 
@@ -62,10 +71,40 @@ public class MessageFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_message, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_message, container, false);
+
+        basicBroadcast = new BasicBroadcast();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("com.tencent.tmanapp.broadcast.BasicBroadcast");
+
+        localBroadcastManager = LocalBroadcastManager.getInstance(getActivity());
+        localBroadcastManager.registerReceiver(basicBroadcast, intentFilter);
+
+        rootView.findViewById(R.id.basicBroadcast).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(Config.tag, "click basic broadcast button");
+                Intent intent = new Intent();
+                intent.setAction("com.tencent.tmanapp.broadcast.BasicBroadcast");
+                intent.putExtra("msg", "this is a basic broadcast");
+                localBroadcastManager.sendBroadcast(intent);
+            }
+        });
+
+        rootView.findViewById(R.id.orderBroadcast).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(Config.tag, "click order broadcast button");
+                Intent intent = new Intent();
+                intent.setAction("com.tencent.tmanapp.broadcast.BasicBroadcast");
+                intent.putExtra("msg", "this is a order broadcast");
+                localBroadcastManager.sendBroadcast(intent);
+            }
+        });
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

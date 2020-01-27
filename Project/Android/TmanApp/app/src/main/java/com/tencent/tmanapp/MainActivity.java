@@ -1,14 +1,16 @@
 package com.tencent.tmanapp;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.tencent.tmanapp.menu.DashboardFragment;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements
         HomeFragment.OnFragmentInteractionListener,
         DashboardFragment.OnFragmentInteractionListener,
         MessageFragment.OnFragmentInteractionListener{
+    // 底部菜单
     private Fragment homeFragment;
     private Fragment dashboardFragment;
     private Fragment messageFragment;

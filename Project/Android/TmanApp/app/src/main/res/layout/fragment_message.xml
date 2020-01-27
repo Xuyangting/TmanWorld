@@ -6,9 +6,24 @@
     tools:context=".menu.MessageFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="message" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/basicBroadcast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="标准广播" />
+
+        <Button
+            android:id="@+id/orderBroadcast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="有序广播" />
+    </LinearLayout>
 
 </FrameLayout>
