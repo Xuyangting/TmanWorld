@@ -1,15 +1,23 @@
 package com.tencent.tmanapp.menu;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.tencent.tmanapp.R;
+import com.tencent.tmanapp.bgm.BgmService;
+import com.tencent.tmanapp.util.Config;
+import com.tencent.tmanapp.util.Util;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +38,7 @@ public class HomeFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private MediaPlayer mediaPlayer;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -66,7 +75,34 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        rootView.findViewById(R.id.startBgm).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(Config.tag, "click start bgm");
+                // 启动BGM
+                playBgm(Config.PLAY_MUSIC);
+            }
+        });
+
+        rootView.findViewById(R.id.pauseBgm).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(Config.tag, "click pause bgm");
+                // 启动BGM
+                playBgm(Config.PAUSE_MUSIC);
+            }
+        });
+
+        rootView.findViewById(R.id.stopBgm).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(Config.tag, "click stop bgm");
+                // 启动BGM
+                playBgm(Config.STOP_MUSIC);
+            }
+        });
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -106,5 +142,11 @@ public class HomeFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    private void playBgm(int type){
+        Intent intent = new Intent(getActivity(), BgmService.class);
+        intent.putExtra("type", type);
+        getActivity().startService(intent);
     }
 }

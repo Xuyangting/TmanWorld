@@ -19,25 +19,19 @@
             android:text="开始" />
 
         <Button
-            android:id="@+id/stopBgm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="停止" />
-
-        <Button
-            android:id="@+id/pause"
+            android:id="@+id/pauseBgm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="暂停" />
 
         <Button
-            android:id="@+id/resume"
+            android:id="@+id/stopBgm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="继续" />
+            android:text="停止" />
+
     </LinearLayout>
 
 </FrameLayout>
