@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.tencent.tmanapp.LoginActivity;
+import com.tencent.tmanapp.MainActivity;
 import com.tencent.tmanapp.R;
 import com.tencent.tmanapp.bgm.BgmService;
 import com.tencent.tmanapp.util.Config;
@@ -72,36 +74,45 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+
+        // 点击启动播放
         rootView.findViewById(R.id.startBgm).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(Config.tag, "click start bgm");
-                // 启动BGM
                 playBgm(Config.PLAY_MUSIC);
             }
         });
 
+        // 点击暂停播放
         rootView.findViewById(R.id.pauseBgm).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(Config.tag, "click pause bgm");
-                // 启动BGM
                 playBgm(Config.PAUSE_MUSIC);
             }
         });
 
+        // 点击停止播放
         rootView.findViewById(R.id.stopBgm).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(Config.tag, "click stop bgm");
-                // 启动BGM
                 playBgm(Config.STOP_MUSIC);
             }
         });
+
+        rootView.findViewById(R.id.loginBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), LoginActivity.class));
+            }
+        });
+
         return rootView;
     }
 
