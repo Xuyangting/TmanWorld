@@ -1,6 +1,9 @@
 package com.tencent.tmanapp.util;
 
+
 public class Config {
+    // 登录态账号
+    public static String USER_ID = "";
     public static String tag = "debug_info";
 
     // BGM 相关

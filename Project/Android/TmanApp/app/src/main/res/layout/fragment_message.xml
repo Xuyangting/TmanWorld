@@ -8,22 +8,18 @@
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="267dp"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/basicBroadcast"
+            android:id="@+id/loginBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginRight="50dp"
             android:layout_weight="1"
-            android:text="标准广播" />
-
-        <Button
-            android:id="@+id/orderBroadcast"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="有序广播" />
+            android:text="登录" />
     </LinearLayout>
 
 </FrameLayout>

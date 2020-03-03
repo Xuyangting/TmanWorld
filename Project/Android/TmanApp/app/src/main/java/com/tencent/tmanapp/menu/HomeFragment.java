@@ -40,7 +40,6 @@ public class HomeFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-    private MediaPlayer mediaPlayer;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -78,40 +77,6 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-
-        // 点击启动播放
-        rootView.findViewById(R.id.startBgm).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(Config.tag, "click start bgm");
-                playBgm(Config.PLAY_MUSIC);
-            }
-        });
-
-        // 点击暂停播放
-        rootView.findViewById(R.id.pauseBgm).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(Config.tag, "click pause bgm");
-                playBgm(Config.PAUSE_MUSIC);
-            }
-        });
-
-        // 点击停止播放
-        rootView.findViewById(R.id.stopBgm).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(Config.tag, "click stop bgm");
-                playBgm(Config.STOP_MUSIC);
-            }
-        });
-
-        rootView.findViewById(R.id.loginBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), LoginActivity.class));
-            }
-        });
 
         return rootView;
     }
